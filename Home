@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BharatBMS‑ESS | Energy Storage BMS</title>
+  <meta name="description" content="Modern, high‑reliability Battery Management System (BMS) for Energy Storage Systems with advanced safety, connectivity, and grid‑ready features." />
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Theme tokens — tweak these to match the reference site's vibe
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#E8FFF3',
+              100: '#CFFCE6',
+              200: '#9CF8C7',
+              300: '#62EFA4',
+              400: '#2FDE7D',
+              500: '#12C46A', // primary accent (green)
+              600: '#0FA65A',
+              700: '#0B7C45',
+              800: '#095E36',
+              900: '#083F25',
+            },
+            base: {
+              900: '#0B0F14', // near‑black background
+              800: '#0F141B',
+              700: '#121924',
+              600: '#16202C',
+              100: '#E7ECF3', // soft light text
+            }
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(0,0,0,0.25)'
+          },
+          fontFamily: {
+            display: ['Inter', 'system-ui', 'Segoe UI', 'Roboto', 'Arial'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Subtle grid backdrop like many modern hardware pages */
+    .grid-bg { background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0); background-size: 24px 24px; }
+    .glass { backdrop-filter: blur(6px); background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)); border: 1px solid rgba(255,255,255,0.08); }
+  </style>
+</head>
+<body class="bg-base-900 text-white font-display">
+  <!-- Top bar / Nav -->
+  <header class="sticky top-0 z-40 bg-base-900/75 glass">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between py-3">
+      <div class="flex items-center gap-3">
+        <!-- Replace with your logo -->
+        <div class="h-8 w-8 rounded-lg bg-brand-500 grid place-items-center font-bold">B</div>
+        <span class="text-sm md:text-base text-base-100/80">BharatBMS‑ESS</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-sm text-base-100/80">
+        <a href="#features" class="hover:text-white">Features</a>
+        <a href="#specs" class="hover:text-white">Specs</a>
+        <a href="#system" class="hover:text-white">System</a>
+        <a href="#downloads" class="hover:text-white">Downloads</a>
+        <a href="#contact" class="hover:text-white">Contact</a>
+      </nav>
+      <a href="#contact" class="inline-flex items-center gap-2 rounded-xl bg-brand-500 px-3 py-2 text-sm font-medium shadow-soft hover:bg-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-400/50">Get Quote</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg"></div>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-base-100/80">Energy Storage BMS • ESS</span>
+          <h1 class="mt-4 text-3xl md:text-5xl font-semibold leading-tight">Unified, grid‑ready BMS for <span class="text-brand-400">Energy Storage</span></h1>
+          <p class="mt-4 text-base text-base-100/80">High‑reliability battery management with advanced safety, connectivity, and analytics. Designed for residential, commercial, and utility‑scale storage.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#contact" class="rounded-xl bg-brand-500 px-4 py-2 text-sm font-medium shadow-soft hover:bg-brand-600">Talk to Sales</a>
+            <a href="#specs" class="rounded-xl border border-white/10 px-4 py-2 text-sm text-base-100/80 hover:bg-white/5">View Specifications</a>
+          </div>
+          <div class="mt-6 flex items-center gap-6 text-xs text-base-100/70">
+            <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-brand-400"></span> IEC/UL compliant*</div>
+            <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-brand-400"></span> CAN / RS485 / Modbus / Ethernet</div>
+          </div>
+          <p class="mt-2 text-[11px] text-base-100/50">*Sample copy. Replace with your actual certifications.</p>
+        </div>
+        <div class="relative">
+          <!-- Device mockup area; replace with your render/product photo -->
+          <div class="aspect-[4/3] rounded-2xl glass grid place-items-center shadow-soft">
+            <div class="text-center p-6">
+              <div class="mx-auto h-28 w-40 rounded-xl border border-white/10 bg-white/5"></div>
+              <p class="mt-4 text-sm text-base-100/70">Product/pack image placeholder</p>
+            </div>
+          </div>
+          <!-- Floating badges -->
+          <div class="absolute -top-3 -right-3 rounded-xl bg-brand-500 px-3 py-1 text-xs shadow-soft">ESS</div>
+          <div class="absolute bottom-4 -left-3 rounded-xl bg-white/10 px-3 py-1 text-xs">Cloud &amp; Edge</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature highlights -->
+  <section id="features" class="relative">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+      <h2 class="text-2xl md:text-3xl font-semibold">Built for reliability and scale</h2>
+      <p class="mt-2 text-base text-base-100/80">Core capabilities that make integration straightforward across residential, C&amp;I, and utility deployments.</p>
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card -->
+        <div class="glass rounded-2xl p-6 shadow-soft">
+          <h3 class="font-medium">Multi‑level protection</h3>
+          <p class="mt-1 text-sm text-base-100/80">Over/under‑voltage, current, temperature, short‑circuit, isolation and pre‑charge logic built‑in.</p>
+        </div>
+        <div class="glass rounded-2xl p-6 shadow-soft">
+          <h3 class="font-medium">Flexible topology</h3>
+          <p class="mt-1 text-sm text-base-100/80">Master‑slave architecture for packs, racks, and containers with hot‑swap capable modules.</p>
+        </div>
+        <div class="glass rounded-2xl p-6 shadow-soft">
+          <h3 class="font-medium">Communications ready</h3>
+          <p class="mt-1 text-sm text-base-100/80">CAN, RS485/Modbus, and Ethernet with open documentation for inverter/PCS vendors.</p>
+        </div>
+        <div class="glass rounded-2xl p-6 shadow-soft">
+          <h3 class="font-medium">Cloud telemetry</h3>
+          <p class="mt-1 text-sm text-base-100/80">Secure device provisioning, OTA updates, fleet dashboards, and alerting.</p>
+        </div>
+        <div class="glass rounded-2xl p-6 shadow-soft">
+          <h3 class="font-medium">Accurate SoC/SoH</h3>
+          <p class="mt-1 text-sm text-base-100/80">Coulomb counting with model‑based estimation and dynamic calibration.</p>
+        </div>
+        <div class="glass rounded-2xl p-6 shadow-soft">
+          <h3 class="font-medium">Installer friendly</h3>
+          <p class="mt-1 text-sm text-base-100/80">Front‑panel diagnostics, quick setup via web UI, and QR assisted commissioning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specs table -->
+  <section id="specs" class="relative">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+      <div class="mb-6 flex items-end justify-between gap-4">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold">Key Specifications</h2>
+          <p class="mt-2 text-base text-base-100/80">Replace sample numbers with your exact model data.</p>
+        </div>
+        <a href="#downloads" class="text-sm text-brand-400 hover:underline">Download datasheet</a>
+      </div>
+
+      <div class="overflow-hidden rounded-2xl border border-white/10">
+        <table class="min-w-full divide-y divide-white/10">
+          <thead class="bg-white/5">
+            <tr>
+              <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-base-100/70">Parameter</th>
+              <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-base-100/70">Value</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5">
+            <tr>
+              <td class="px-4 py-3">Battery Chemistry</td>
+              <td class="px-4 py-3 text-base-100/90">LFP / NMC</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3">Nominal Pack Voltage</td>
+              <td class="px-4 py-3 text-base-100/90">48V / 96V / 384V (scalable)</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3">Max Continuous Current</td>
+              <td class="px-4 py-3 text-base-100/90">200A (pack), 400A (rack)</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3">Measurement Accuracy</td>
+              <td class="px-4 py-3 text-base-100/90">Voltage ±5mV/cell, Current ±0.5% FS, Temp ±1°C</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3">Balancing</td>
+              <td class="px-4 py-3 text-base-100/90">Active / Passive up to 100mA/cell</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3">Interfaces</td>
+              <td class="px-4 py-3 text-base-100/90">CAN 2.0B, RS485/Modbus, Ethernet</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3">Ingress Rating</td>
+              <td class="px-4 py-3 text-base-100/90">IP20 (pack), IP54 (controller)</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3">Operating Temp</td>
+              <td class="px-4 py-3 text-base-100/90">‑20°C to 60°C</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-6 text-xs text-base-100/60">Numbers shown are placeholders.</div>
+    </div>
+  </section>
+
+  <!-- System diagram / architecture -->
+  <section id="system" class="relative">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+      <h2 class="text-2xl md:text-3xl font-semibold">System Architecture</h2>
+      <p class="mt-2 text-base text-base-100/80">Typical ESS topology using the BMS as pack, rack, and site controller.</p>
+
+      <div class="mt-6 grid md:grid-cols-3 gap-6">
+        <div class="glass rounded-2xl p-6 shadow-soft">
+          <h3 class="font-medium">Pack Level</h3>
+          <p class="mt-2 text-sm text-base-100/80">Cell sensing, balancing, contactors, pre‑charge, NTC inputs, and safety IO.</p>
+        </div>
+        <div class="glass rounded-2xl p-6 shadow-soft">
+          <h3 class="font-medium">Rack Level</h3>
+          <p class="mt-2 text-sm text-base-100/80">String aggregation, rack controller, current sensing, isolation monitoring.</p>
+        </div>
+        <div class="glass rounded-2xl p-6 shadow-soft">
+          <h3 class="font-medium">Site/EMS</h3>
+          <p class="mt-2 text-sm text-base-100/80">PCS/inverter interface, EMS, cloud gateway, SCADA integration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compatible inverters / partners (logos as placeholders) -->
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+      <div class="flex items-center justify-between gap-4">
+        <h2 class="text-xl md:text-2xl font-semibold">Compatible With</h2>
+        <p class="text-sm text-base-100/70">Replace logos with actual partners/vendors.</p>
+      </div>
+      <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+        <div class="aspect-[3/2] rounded-xl glass grid place-items-center">Logo</div>
+        <div class="aspect-[3/2] rounded-xl glass grid place-items-center">Logo</div>
+        <div class="aspect-[3/2] rounded-xl glass grid place-items-center">Logo</div>
+        <div class="aspect-[3/2] rounded-xl glass grid place-items-center">Logo</div>
+        <div class="aspect-[3/2] rounded-xl glass grid place-items-center">Logo</div>
+        <div class="aspect-[3/2] rounded-xl glass grid place-items-center">Logo</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Downloads -->
+  <section id="downloads" class="relative">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+      <div class="glass rounded-2xl p-6 md:p-8 shadow-soft">
+        <div class="md:flex items-start justify-between gap-8">
+          <div>
+            <h2 class="text-2xl font-semibold">Downloads</h2>
+            <p class="mt-2 text-base text-base-100/80">Provide PDFs and tools for installers and customers.</p>
+            <ul class="mt-4 space-y-2 text-sm text-base-100/80 list-disc list-inside">
+              <li>ESS BMS Datasheet (PDF)</li>
+              <li>Install & Commissioning Guide (PDF)</li>
+              <li>CAN/Modbus Mapping (XLSX)</li>
+            </ul>
+          </div>
+          <div class="mt-6 md:mt-0 grid sm:grid-cols-2 gap-3 w-full max-w-lg">
+            <a class="glass rounded-xl p-4 text-center hover:bg-white/10" href="#">Download Datasheet</a>
+            <a class="glass rounded-xl p-4 text-center hover:bg-white/10" href="#">Commissioning Guide</a>
+            <a class="glass rounded-xl p-4 text-center hover:bg-white/10" href="#">Protocol Mapping</a>
+            <a class="glass rounded-xl p-4 text-center hover:bg-white/10" href="#">Compliance Certificates</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / Contact -->
+  <section id="contact" class="relative">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold">Ready to integrate?</h2>
+          <p class="mt-2 text-base text-base-100/80">Tell us about your ESS capacity, pack voltage, and preferred inverter/PCS. We'll revert with compatibility and pricing.</p>
+          <div class="mt-6 flex gap-3">
+            <a href="#" class="rounded-xl bg-brand-500 px-4 py-2 text-sm font-medium shadow-soft hover:bg-brand-600">Get a Quote</a>
+            <a href="#" class="rounded-xl border border-white/10 px-4 py-2 text-sm text-base-100/80 hover:bg-white/5">Talk to an Engineer</a>
+          </div>
+        </div>
+        <form class="glass rounded-2xl p-6 shadow-soft space-y-4">
+          <div>
+            <label class="text-xs text-base-100/70">Name</label>
+            <input class="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-brand-400/50" placeholder="Your name" />
+          </div>
+          <div>
+            <label class="text-xs text-base-100/70">Email</label>
+            <input type="email" class="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-brand-400/50" placeholder="name@example.com" />
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="text-xs text-base-100/70">Pack Voltage</label>
+              <input class="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm" placeholder="48V / 96V / 384V" />
+            </div>
+            <div>
+              <label class="text-xs text-base-100/70">Capacity</label>
+              <input class="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm" placeholder="kWh" />
+            </div>
+          </div>
+          <div>
+            <label class="text-xs text-base-100/70">Message</label>
+            <textarea rows="4" class="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm" placeholder="Share project details"></textarea>
+          </div>
+          <button type="button" class="w-full rounded-xl bg-brand-500 px-4 py-2 text-sm font-medium shadow-soft hover:bg-brand-600">Submit</button>
+          <p class="text-[11px] text-base-100/50">This is a static demo form. Connect to your backend or a service like Formspree.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 text-sm text-base-100/70 flex flex-col md:flex-row items-center justify-between gap-3">
+      <p>© <span id="year"></span> Your Brand. All rights reserved.</p>
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:text-white">Privacy</a>
+        <a href="#" class="hover:text-white">Terms</a>
+        <a href="#" class="hover:text-white">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+</body>
+</html>
