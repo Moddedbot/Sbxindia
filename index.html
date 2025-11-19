@@ -228,24 +228,28 @@
       color:var(--muted);
     }
 
-    .hero-art{
-      background:#eef7ee;
-      border-radius:var(--radius);
-      padding:20px;
-      min-height:260px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      font-size:14px;
-      color:var(--muted);
-      border:1px dashed rgba(102,187,106,0.65);
-      box-shadow:0 10px 24px rgba(0,0,0,0.06);
-    }
-    .hero-section--weighing .hero-art{
-      background:#ecf3ff;
-      border-color:rgba(80,138,196,0.6);
-    }
+   .hero-art{
+  background:#eef7ee;
+  border-radius:var(--radius);
+  /* remove the fixed padding & min-height */
+  padding:0;
+  min-height:auto;
+  border:1px dashed rgba(102,187,106,0.65);
+  box-shadow:0 10px 24px rgba(0,0,0,0.06);
+  overflow:hidden; /* so rounded corners clip the image */
+}
+
+.hero-section--weighing .hero-art{
+  background:#ecf3ff;
+  border-color:rgba(80,138,196,0.6);
+}
+
+/* make the image fully responsive */
+.hero-art img{
+  width:100%;
+  height:auto;
+  display:block;
+}
 
     @media(max-width:900px){
       .hero-layout,
@@ -624,11 +628,11 @@
             <a class="btn" href="#products">Explore Power Products</a>
           </div>
           <div class="hero-media">
-           <div class="hero-art" style="padding:0;">
+          <div class="hero-art">
   <img src="https://raw.githubusercontent.com/Moddedbot/Sbxindia/d82cd65840d0870b5205b2b3f7792e5411d6b914/Assets/HomeImage%20Fix%20size.png"
-       alt="Power Solutions Banner"
-       style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+       alt="Power Solutions Banner">
 </div>
+
           </div>
         </div>
       </div>
