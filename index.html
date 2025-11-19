@@ -1,323 +1,973 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
+  <!-- ========= BASIC SEO ========= -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BharatBMS‑ESS | Energy Storage BMS</title>
-  <meta name="description" content="Modern, high‑reliability Battery Management System (BMS) for Energy Storage Systems with advanced safety, connectivity, and grid‑ready features." />
-  <!-- Tailwind via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    // Theme tokens — tweak these to match the reference site's vibe
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              50: '#E8FFF3',
-              100: '#CFFCE6',
-              200: '#9CF8C7',
-              300: '#62EFA4',
-              400: '#2FDE7D',
-              500: '#12C46A', // primary accent (green)
-              600: '#0FA65A',
-              700: '#0B7C45',
-              800: '#095E36',
-              900: '#083F25',
-            },
-            base: {
-              900: '#0B0F14', // near‑black background
-              800: '#0F141B',
-              700: '#121924',
-              600: '#16202C',
-              100: '#E7ECF3', // soft light text
-            }
-          },
-          boxShadow: {
-            soft: '0 10px 30px rgba(0,0,0,0.25)'
-          },
-          fontFamily: {
-            display: ['Inter', 'system-ui', 'Segoe UI', 'Roboto', 'Arial'],
-          }
-        }
+  <title>SB Enterprises — Multi-brand Batteries, Inverters, Solar & Weighing Solutions</title>
+  <meta name="description" content="SB Enterprises provides multi-brand lithium and inverter batteries, inverters, solar setups, automotive batteries, and weighing machines. Reliable power solutions for homes, offices, and vehicles." />
+
+  <!-- ========= SCHEMA.ORG JSON-LD (Basic LocalBusiness) ========= -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "SB Enterprises",
+    "description": "Multi-brand batteries, inverters, solar solutions and weighing machines.",
+    "url": "https://your-domain.com",
+    "telephone": "+91XXXXXXXXXX",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Your Street, Area",
+      "addressLocality": "Your City",
+      "addressRegion": "Your State",
+      "postalCode": "Your PIN",
+      "addressCountry": "IN"
+    },
+    "sameAs": []
+  }
+  </script>
+
+  <style>
+    /* ==============================
+       THEME VARIABLES
+       ============================== */
+    :root{
+      --primary: #1b5e20;
+      --primary-600:#14501a;
+      --accent:  #66bb6a;
+      --text:    #2b2b2b;
+      --muted:   #6b6b6b;
+      --bg:      #ffffff;
+      --card:    #f7faf7;
+      --border:  #e6efe6;
+      --maxw:    1200px;
+      --radius:  12px;
+      --shadow:  0 6px 20px rgba(0,0,0,.06);
+    }
+
+    /* ==============================
+       GLOBAL
+       ============================== */
+    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    img{ max-width: 100%; height: auto; display:block; }
+    a{ color: var(--primary); text-decoration: none; }
+    .container{
+      width: 100%;
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding: 0 20px;
+    }
+    section{ scroll-margin-top: 90px; }
+
+    /* ==============================
+       HEADER (same as before)
+       ============================== */
+    .sb-header{
+      position: sticky; top: 0; z-index: 1000;
+      background: #ffffffcc;
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
+    }
+    .sb-container{
+      width: 100%;
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding: 0 24px;
+    }
+    .sb-nav{
+      display:flex; align-items:center; justify-content:space-between;
+      min-height: 70px;
+    }
+    .sb-brand{
+      display:flex; align-items:center; gap:12px; font-weight:800;
+      color: var(--primary);
+    }
+    .sb-brand img{
+      width:42px; height:42px; object-fit:contain;
+    }
+    .sb-navpanel ul{
+      list-style:none; display:flex; gap:22px; padding:0; margin:0;
+      align-items:center;
+    }
+    .sb-navpanel a{
+      text-decoration:none; color: var(--text); font-weight:600;
+    }
+    .sb-navpanel a:hover{ color: var(--primary); }
+    .sb-navpanel .sb-cta{
+      padding: 10px 14px; border-radius: 10px; background: var(--primary);
+      color:#fff; border:1px solid var(--primary); font-weight:700;
+    }
+    .sb-navpanel .sb-cta:hover{ background: var(--primary-600); }
+
+    /* Hamburger */
+    .sb-menu-toggle{
+      appearance:none; border:0; background:transparent; cursor:pointer;
+      width:44px; height:44px; border-radius:10px; display:none;
+      align-items:center; justify-content:center;
+    }
+    .sb-menu-toggle:focus { outline: 2px solid var(--primary); }
+    .sb-burger, .sb-burger::before, .sb-burger::after{
+      content:""; display:block; width:22px; height:2px; background: var(--text);
+      border-radius: 2px; position:relative; transition: transform .2s ease, opacity .2s ease;
+    }
+    .sb-burger::before{ position:absolute; top:-7px; left:0; }
+    .sb-burger::after { position:absolute; top:7px;  left:0; }
+    .sb-menu-toggle[aria-expanded="true"] .sb-burger{ transform: rotate(45deg); }
+    .sb-menu-toggle[aria-expanded="true"] .sb-burger::before{ opacity:0; }
+    .sb-menu-toggle[aria-expanded="true"] .sb-burger::after{
+      transform: rotate(-90deg) translateX(-7px);
+    }
+
+    @media (max-width: 880px){
+      .sb-menu-toggle{ display:flex; }
+      .sb-navpanel{
+        position: absolute; left:0; right:0; top: 70px;
+        background: var(--bg);
+        border-bottom:1px solid var(--border);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        transform-origin: top;
+        transition: grid-template-rows .2s ease, opacity .2s ease;
+        display: grid;
+        grid-template-rows: 0fr;
+        opacity: 0;
+      }
+      .sb-navpanel[data-open="true"]{
+        grid-template-rows: 1fr;
+        opacity: 1;
+      }
+      .sb-navpanel > ul{
+        margin: 0; padding: 10px 24px 16px;
+        display: grid; gap: 10px;
+        overflow: hidden;
+      }
+      .sb-navpanel a{
+        padding: 12px 8px; border-radius: 8px; display:block;
+      }
+      .sb-navpanel a:hover{ background: #f6fff6; }
+      .sb-navpanel .sb-cta{
+        text-align:center; margin-top: 6px;
       }
     }
-  </script>
-  <style>
-    /* Subtle grid backdrop like many modern hardware pages */
-    .grid-bg { background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0); background-size: 24px 24px; }
-    .glass { backdrop-filter: blur(6px); background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)); border: 1px solid rgba(255,255,255,0.08); }
+    @media (max-width: 1100px) and (min-width: 881px){
+      .sb-navpanel ul{ gap:16px; }
+    }
+
+    /* ==============================
+       BUTTON
+       ============================== */
+    .btn{
+      display:inline-block;
+      padding:10px 16px;
+      border-radius:var(--radius);
+      background:var(--primary);
+      border:1px solid var(--primary);
+      color:#fff;
+      font-weight:600;
+      font-size:14px;
+      transition:background .2s, transform .06s;
+    }
+    .btn:hover{
+      background:var(--primary-600);
+      transform:translateY(-1px);
+    }
+
+    /* ==============================
+       NEW DUAL HERO (from your code)
+       ============================== */
+
+    /* subtle page background behind both heroes */
+    .hero-bg{
+      background:
+        radial-gradient(circle at top left, rgba(102,187,106,0.10) 0%, transparent 55%),
+        radial-gradient(circle at bottom right, rgba(53,119,70,0.08) 0%, transparent 60%),
+        linear-gradient(to bottom,
+          #fbfdfc 0%,
+          #f7fafc 45%,
+          #fbfdfb 100%
+        );
+    }
+
+    .hero-section{
+      padding:50px 0;
+    }
+
+    .hero-layout{
+      display:grid;
+      grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);
+      gap:40px;
+      align-items:center;
+      grid-template-areas:"content media";
+    }
+    .hero-layout--reverse{
+      grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);
+      grid-template-areas:"media content";
+    }
+    .hero-content{
+      grid-area:content;
+    }
+    .hero-media{
+      grid-area:media;
+      position:relative;
+    }
+
+    .hero-section--power .hero-content-label::before{
+      content:"🔋 Power • Batteries • Solar";
+    }
+    .hero-section--weighing .hero-content-label::before{
+      content:"⚖️ Weighing • Retail • Industrial";
+    }
+    .hero-content-label::before{
+      display:inline-block;
+      margin-bottom:10px;
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:600;
+      letter-spacing:0.03em;
+      text-transform:uppercase;
+      color:var(--primary);
+      background:rgba(255,255,255,0.8);
+      border:1px solid rgba(187,214,196,0.7);
+    }
+
+    .hero-content h1{
+      margin:0 0 12px;
+      font-size:clamp(26px,3vw,40px);
+      color:var(--primary);
+    }
+    .hero-content p{
+      margin:0 0 20px;
+      color:var(--muted);
+    }
+
+    .hero-art{
+      background:#eef7ee;
+      border-radius:var(--radius);
+      padding:20px;
+      min-height:260px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      font-size:14px;
+      color:var(--muted);
+      border:1px dashed rgba(102,187,106,0.65);
+      box-shadow:0 10px 24px rgba(0,0,0,0.06);
+    }
+    .hero-section--weighing .hero-art{
+      background:#ecf3ff;
+      border-color:rgba(80,138,196,0.6);
+    }
+
+    @media(max-width:900px){
+      .hero-layout,
+      .hero-layout--reverse{
+        grid-template-columns:1fr;
+        grid-template-areas:
+          "content"
+          "media";
+        text-align:left;
+      }
+      .hero-section{
+        padding:30px 0;
+      }
+    }
+
+    /* ==============================
+       PRODUCTS GRID
+       ============================== */
+    .section-head{
+      margin: 56px 0 20px;
+    }
+    .section-head h2{
+      margin: 0 0 8px; color: var(--primary);
+      font-size: clamp(22px, 2.6vw, 32px);
+    }
+    .section-head p{ margin: 0; color: var(--muted); }
+
+    .grid{
+      display:grid; gap: 20px;
+      grid-template-columns: repeat(12, 1fr);
+    }
+    .card{
+      grid-column: span 6;
+      background: var(--card); border:1px solid var(--border);
+      border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .card h3{ margin: 0; color: var(--text); font-size: 18px; }
+    .card p{ margin: 0; color: var(--muted); }
+    .card .card-actions{ margin-top: 8px; }
+    .card .ghost{
+      display:inline-block; padding: 10px 14px; border-radius: 10px;
+      border:1px solid var(--accent); color: var(--primary); font-weight:600;
+      background: #fff;
+    }
+    .card .ghost:hover{ background:#f6fff6; }
+    @media (max-width: 900px){
+      .card{ grid-column: span 12; }
+    }
+
+    /* ==============================
+       GOOGLE REVIEWS / TESTIMONIALS
+       ============================== */
+    .reviews{
+      background:#fff;
+      border-top:1px solid var(--border);
+      padding: 42px 0 56px;
+    }
+    .review-carousel{
+      position: relative;
+      margin-top: 12px;
+    }
+
+    /* Visible area – wider & padded so card isn't cut */
+    .review-window{
+      overflow: hidden;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .review-track{
+      display: flex;
+      transition: transform .45s ease;
+    }
+
+    .review-card{
+      flex: 0 0 100%;
+      max-width: 100%;
+      margin: 0 8px;
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 16px 18px;
+      box-shadow: var(--shadow);
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .review-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:10px;
+    }
+    .review-name{
+      font-weight:700;
+      color: var(--text);
+      font-size: 15px;
+    }
+    .review-meta{
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .review-stars{
+      color: #f4b400;
+      font-size: 14px;
+    }
+    .review-text{
+      margin: 4px 0 0;
+      font-size: 14px;
+      color: var(--text);
+    }
+    .review-source{
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .review-badge{
+      font-size:11px;
+      padding:4px 8px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid var(--border);
+    }
+
+    .review-nav{
+      position:absolute;
+      top:50%;
+      transform: translateY(-50%);
+      width:32px;
+      height:32px;
+      border-radius:50%;
+      border:1px solid var(--border);
+      background:#fff;
+      box-shadow: var(--shadow);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      font-size:18px;
+      color: var(--primary);
+    }
+    .review-nav:hover{
+      background:#f6fff6;
+    }
+    .review-nav.prev{ left: 10px; }
+    .review-nav.next{ right: 10px; }
+
+    .review-dots{
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      margin-top: 14px;
+    }
+    .review-dot{
+      width:8px;
+      height:8px;
+      padding:0;
+      border-radius:999px;
+      border:none;
+      background: var(--border);
+      cursor:pointer;
+    }
+    .review-dot.active{
+      width:22px;
+      background: var(--primary);
+    }
+
+    @media (max-width: 520px){
+      .review-nav.prev{ left: 4px; }
+      .review-nav.next{ right: 4px; }
+      .review-window{
+        padding: 0 16px;
+      }
+    }
+
+    /* ==============================
+       ABOUT + LOCATION
+       ============================== */
+    .about{
+      background: #fff;
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      padding: 38px 0 46px;
+    }
+    .about-grid{
+      display:grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap:24px;
+      align-items:flex-start;
+      margin-top: 10px;
+    }
+    .about p{
+      color: var(--text);
+      margin-top: 0;
+    }
+    @media (max-width: 900px){
+      .about-grid{
+        grid-template-columns: 1fr;
+      }
+    }
+    .location-card{
+      background:#f7faf7;
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 18px 20px;
+      box-shadow: var(--shadow);
+    }
+    .location-card h3{
+      margin:0 0 6px;
+      color: var(--primary);
+      font-size: 18px;
+    }
+    .location-card p{
+      margin:0 0 12px;
+      color: var(--muted);
+      font-size:13px;
+    }
+    .location-map{
+      width:100%;
+      height:260px;
+      border-radius: var(--radius);
+      overflow:hidden;
+    }
+    .location-map iframe{
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    /* ==============================
+       QUOTE FORM
+       ============================== */
+    .quote{
+      padding: 42px 0 64px;
+    }
+    form{
+      background:#fff; border:1px solid var(--border); border-radius: var(--radius);
+      padding: 18px; box-shadow: var(--shadow);
+      display:grid; gap:16px;
+    }
+    .row{
+      display:grid; gap:16px; grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 700px){ .row{ grid-template-columns: 1fr; } }
+    label{ font-weight:600; color: var(--text); display:block; margin-bottom: 6px; }
+    input, select, textarea{
+      width:100%; padding:12px 10px; border:1px solid var(--border); border-radius: 10px;
+      font: inherit; color: var(--text); background:#fafafa;
+    }
+    input:focus, select:focus, textarea:focus{
+      outline: 2px solid var(--accent); background:#fff;
+    }
+    textarea{ min-height: 120px; resize: vertical; }
+    .submit{ justify-self: start; }
+
+    /* ==============================
+       FOOTER
+       ============================== */
+    footer{
+      border-top:1px solid var(--border);
+      padding: 22px 0; color: var(--muted); font-size: 14px;
+      background: #fff;
+    }
+
+    /* ==============================
+       FLOATING WHATSAPP BUTTON
+       ============================== */
+    .wa-fab{
+      position: fixed; right: 18px; bottom: 18px; z-index: 60;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #25D366; display:flex; align-items:center; justify-content:center;
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+      border: 2px solid #fff;
+    }
+    .wa-fab:hover{ filter: brightness(0.95); transform: translateY(-1px); }
+    .wa-fab svg{ width: 28px; height: 28px; fill: #fff; }
+    .wa-label{
+      position: fixed; right: 84px; bottom: 28px; z-index: 60;
+      background:#ffffff; border:1px solid var(--border); padding:8px 10px; border-radius:10px;
+      color: var(--text); font-weight:600; box-shadow: var(--shadow);
+      display:none;
+    }
+    @media (min-width: 480px){ .wa-label{ display:block; } }
   </style>
 </head>
-<body class="bg-base-900 text-white font-display">
-  <!-- Top bar / Nav -->
-  <header class="sticky top-0 z-40 bg-base-900/75 glass">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between py-3">
-      <div class="flex items-center gap-3">
-        <!-- Replace with your logo -->
-        <div class="h-8 w-8 rounded-lg bg-brand-500 grid place-items-center font-bold">B</div>
-        <span class="text-sm md:text-base text-base-100/80">BharatBMS‑ESS</span>
-      </div>
-      <nav class="hidden md:flex items-center gap-6 text-sm text-base-100/80">
-        <a href="#features" class="hover:text-white">Features</a>
-        <a href="#specs" class="hover:text-white">Specs</a>
-        <a href="#system" class="hover:text-white">System</a>
-        <a href="#downloads" class="hover:text-white">Downloads</a>
-        <a href="#contact" class="hover:text-white">Contact</a>
+<body>
+
+  <!-- HEADER -->
+  <header class="sb-header">
+    <div class="sb-container sb-nav" role="navigation" aria-label="Main Navigation">
+      <a class="sb-brand" href="#home">
+        <img src="logo-sb-enterprises.png" alt="SB Enterprises logo" />
+        <span>SB Enterprises</span>
+      </a>
+
+      <button class="sb-menu-toggle" aria-expanded="false" aria-controls="sb-primary-nav" aria-label="Toggle menu">
+        <span class="sb-burger" aria-hidden="true"></span>
+      </button>
+
+      <nav id="sb-primary-nav" class="sb-navpanel" data-open="false">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products / Brands</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a class="sb-cta" href="#quote">Get a Quote</a></li>
+        </ul>
       </nav>
-      <a href="#contact" class="inline-flex items-center gap-2 rounded-xl bg-brand-500 px-3 py-2 text-sm font-medium shadow-soft hover:bg-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-400/50">Get Quote</a>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-0 grid-bg"></div>
-    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-      <div class="grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-base-100/80">Energy Storage BMS • ESS</span>
-          <h1 class="mt-4 text-3xl md:text-5xl font-semibold leading-tight">Unified, grid‑ready BMS for <span class="text-brand-400">Energy Storage</span></h1>
-          <p class="mt-4 text-base text-base-100/80">High‑reliability battery management with advanced safety, connectivity, and analytics. Designed for residential, commercial, and utility‑scale storage.</p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a href="#contact" class="rounded-xl bg-brand-500 px-4 py-2 text-sm font-medium shadow-soft hover:bg-brand-600">Talk to Sales</a>
-            <a href="#specs" class="rounded-xl border border-white/10 px-4 py-2 text-sm text-base-100/80 hover:bg-white/5">View Specifications</a>
+  <!-- DUAL HERO WRAPPER -->
+  <div class="hero-bg">
+
+    <!-- HERO 1: POWER -->
+    <section class="hero-section hero-section--power" id="home">
+      <div class="container">
+        <div class="hero-layout">
+          <div class="hero-content">
+            <div class="hero-content-label"></div>
+            <h1>Power Solutions for Home, Solar &amp; Automotive</h1>
+            <p>
+              Multi-brand lithium and inverter batteries, inverters and solar setups —
+              focused on backup, performance and long-term reliability.
+            </p>
+            <a class="btn" href="#products">Explore Power Products</a>
           </div>
-          <div class="mt-6 flex items-center gap-6 text-xs text-base-100/70">
-            <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-brand-400"></span> IEC/UL compliant*</div>
-            <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-brand-400"></span> CAN / RS485 / Modbus / Ethernet</div>
-          </div>
-          <p class="mt-2 text-[11px] text-base-100/50">*Sample copy. Replace with your actual certifications.</p>
-        </div>
-        <div class="relative">
-          <!-- Device mockup area; replace with your render/product photo -->
-          <div class="aspect-[4/3] rounded-2xl glass grid place-items-center shadow-soft">
-            <div class="text-center p-6">
-              <div class="mx-auto h-28 w-40 rounded-xl border border-white/10 bg-white/5"></div>
-              <p class="mt-4 text-sm text-base-100/70">Product/pack image placeholder</p>
+          <div class="hero-media">
+            <div class="hero-art">
+              Replace with batteries / inverter / solar image (around 800×600 px)
             </div>
           </div>
-          <!-- Floating badges -->
-          <div class="absolute -top-3 -right-3 rounded-xl bg-brand-500 px-3 py-1 text-xs shadow-soft">ESS</div>
-          <div class="absolute bottom-4 -left-3 rounded-xl bg-white/10 px-3 py-1 text-xs">Cloud &amp; Edge</div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Feature highlights -->
-  <section id="features" class="relative">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-      <h2 class="text-2xl md:text-3xl font-semibold">Built for reliability and scale</h2>
-      <p class="mt-2 text-base text-base-100/80">Core capabilities that make integration straightforward across residential, C&amp;I, and utility deployments.</p>
-      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Card -->
-        <div class="glass rounded-2xl p-6 shadow-soft">
-          <h3 class="font-medium">Multi‑level protection</h3>
-          <p class="mt-1 text-sm text-base-100/80">Over/under‑voltage, current, temperature, short‑circuit, isolation and pre‑charge logic built‑in.</p>
-        </div>
-        <div class="glass rounded-2xl p-6 shadow-soft">
-          <h3 class="font-medium">Flexible topology</h3>
-          <p class="mt-1 text-sm text-base-100/80">Master‑slave architecture for packs, racks, and containers with hot‑swap capable modules.</p>
-        </div>
-        <div class="glass rounded-2xl p-6 shadow-soft">
-          <h3 class="font-medium">Communications ready</h3>
-          <p class="mt-1 text-sm text-base-100/80">CAN, RS485/Modbus, and Ethernet with open documentation for inverter/PCS vendors.</p>
-        </div>
-        <div class="glass rounded-2xl p-6 shadow-soft">
-          <h3 class="font-medium">Cloud telemetry</h3>
-          <p class="mt-1 text-sm text-base-100/80">Secure device provisioning, OTA updates, fleet dashboards, and alerting.</p>
-        </div>
-        <div class="glass rounded-2xl p-6 shadow-soft">
-          <h3 class="font-medium">Accurate SoC/SoH</h3>
-          <p class="mt-1 text-sm text-base-100/80">Coulomb counting with model‑based estimation and dynamic calibration.</p>
-        </div>
-        <div class="glass rounded-2xl p-6 shadow-soft">
-          <h3 class="font-medium">Installer friendly</h3>
-          <p class="mt-1 text-sm text-base-100/80">Front‑panel diagnostics, quick setup via web UI, and QR assisted commissioning.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Specs table -->
-  <section id="specs" class="relative">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-      <div class="mb-6 flex items-end justify-between gap-4">
-        <div>
-          <h2 class="text-2xl md:text-3xl font-semibold">Key Specifications</h2>
-          <p class="mt-2 text-base text-base-100/80">Replace sample numbers with your exact model data.</p>
-        </div>
-        <a href="#downloads" class="text-sm text-brand-400 hover:underline">Download datasheet</a>
-      </div>
-
-      <div class="overflow-hidden rounded-2xl border border-white/10">
-        <table class="min-w-full divide-y divide-white/10">
-          <thead class="bg-white/5">
-            <tr>
-              <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-base-100/70">Parameter</th>
-              <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-base-100/70">Value</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-white/5">
-            <tr>
-              <td class="px-4 py-3">Battery Chemistry</td>
-              <td class="px-4 py-3 text-base-100/90">LFP / NMC</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3">Nominal Pack Voltage</td>
-              <td class="px-4 py-3 text-base-100/90">48V / 96V / 384V (scalable)</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3">Max Continuous Current</td>
-              <td class="px-4 py-3 text-base-100/90">200A (pack), 400A (rack)</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3">Measurement Accuracy</td>
-              <td class="px-4 py-3 text-base-100/90">Voltage ±5mV/cell, Current ±0.5% FS, Temp ±1°C</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3">Balancing</td>
-              <td class="px-4 py-3 text-base-100/90">Active / Passive up to 100mA/cell</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3">Interfaces</td>
-              <td class="px-4 py-3 text-base-100/90">CAN 2.0B, RS485/Modbus, Ethernet</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3">Ingress Rating</td>
-              <td class="px-4 py-3 text-base-100/90">IP20 (pack), IP54 (controller)</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3">Operating Temp</td>
-              <td class="px-4 py-3 text-base-100/90">‑20°C to 60°C</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="mt-6 text-xs text-base-100/60">Numbers shown are placeholders.</div>
-    </div>
-  </section>
-
-  <!-- System diagram / architecture -->
-  <section id="system" class="relative">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-      <h2 class="text-2xl md:text-3xl font-semibold">System Architecture</h2>
-      <p class="mt-2 text-base text-base-100/80">Typical ESS topology using the BMS as pack, rack, and site controller.</p>
-
-      <div class="mt-6 grid md:grid-cols-3 gap-6">
-        <div class="glass rounded-2xl p-6 shadow-soft">
-          <h3 class="font-medium">Pack Level</h3>
-          <p class="mt-2 text-sm text-base-100/80">Cell sensing, balancing, contactors, pre‑charge, NTC inputs, and safety IO.</p>
-        </div>
-        <div class="glass rounded-2xl p-6 shadow-soft">
-          <h3 class="font-medium">Rack Level</h3>
-          <p class="mt-2 text-sm text-base-100/80">String aggregation, rack controller, current sensing, isolation monitoring.</p>
-        </div>
-        <div class="glass rounded-2xl p-6 shadow-soft">
-          <h3 class="font-medium">Site/EMS</h3>
-          <p class="mt-2 text-sm text-base-100/80">PCS/inverter interface, EMS, cloud gateway, SCADA integration.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Compatible inverters / partners (logos as placeholders) -->
-  <section class="relative">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-      <div class="flex items-center justify-between gap-4">
-        <h2 class="text-xl md:text-2xl font-semibold">Compatible With</h2>
-        <p class="text-sm text-base-100/70">Replace logos with actual partners/vendors.</p>
-      </div>
-      <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-        <div class="aspect-[3/2] rounded-xl glass grid place-items-center">Logo</div>
-        <div class="aspect-[3/2] rounded-xl glass grid place-items-center">Logo</div>
-        <div class="aspect-[3/2] rounded-xl glass grid place-items-center">Logo</div>
-        <div class="aspect-[3/2] rounded-xl glass grid place-items-center">Logo</div>
-        <div class="aspect-[3/2] rounded-xl glass grid place-items-center">Logo</div>
-        <div class="aspect-[3/2] rounded-xl glass grid place-items-center">Logo</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Downloads -->
-  <section id="downloads" class="relative">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-      <div class="glass rounded-2xl p-6 md:p-8 shadow-soft">
-        <div class="md:flex items-start justify-between gap-8">
-          <div>
-            <h2 class="text-2xl font-semibold">Downloads</h2>
-            <p class="mt-2 text-base text-base-100/80">Provide PDFs and tools for installers and customers.</p>
-            <ul class="mt-4 space-y-2 text-sm text-base-100/80 list-disc list-inside">
-              <li>ESS BMS Datasheet (PDF)</li>
-              <li>Install & Commissioning Guide (PDF)</li>
-              <li>CAN/Modbus Mapping (XLSX)</li>
-            </ul>
+    <!-- HERO 2: WEIGHING -->
+    <section class="hero-section hero-section--weighing" id="weighing">
+      <div class="container">
+        <div class="hero-layout hero-layout--reverse">
+          <div class="hero-content">
+            <div class="hero-content-label"></div>
+            <h1>Commercial &amp; Retail Weighing Machines</h1>
+            <p>
+              Digital tabletop and platform scales for kirana, hardware stores and
+              industrial use — with calibration help and service support.
+            </p>
+            <a class="btn" href="#quote">Enquire for Weighing Machines</a>
           </div>
-          <div class="mt-6 md:mt-0 grid sm:grid-cols-2 gap-3 w-full max-w-lg">
-            <a class="glass rounded-xl p-4 text-center hover:bg-white/10" href="#">Download Datasheet</a>
-            <a class="glass rounded-xl p-4 text-center hover:bg-white/10" href="#">Commissioning Guide</a>
-            <a class="glass rounded-xl p-4 text-center hover:bg-white/10" href="#">Protocol Mapping</a>
-            <a class="glass rounded-xl p-4 text-center hover:bg-white/10" href="#">Compliance Certificates</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA / Contact -->
-  <section id="contact" class="relative">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-      <div class="grid md:grid-cols-2 gap-8">
-        <div>
-          <h2 class="text-2xl md:text-3xl font-semibold">Ready to integrate?</h2>
-          <p class="mt-2 text-base text-base-100/80">Tell us about your ESS capacity, pack voltage, and preferred inverter/PCS. We'll revert with compatibility and pricing.</p>
-          <div class="mt-6 flex gap-3">
-            <a href="#" class="rounded-xl bg-brand-500 px-4 py-2 text-sm font-medium shadow-soft hover:bg-brand-600">Get a Quote</a>
-            <a href="#" class="rounded-xl border border-white/10 px-4 py-2 text-sm text-base-100/80 hover:bg-white/5">Talk to an Engineer</a>
-          </div>
-        </div>
-        <form class="glass rounded-2xl p-6 shadow-soft space-y-4">
-          <div>
-            <label class="text-xs text-base-100/70">Name</label>
-            <input class="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-brand-400/50" placeholder="Your name" />
-          </div>
-          <div>
-            <label class="text-xs text-base-100/70">Email</label>
-            <input type="email" class="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-brand-400/50" placeholder="name@example.com" />
-          </div>
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label class="text-xs text-base-100/70">Pack Voltage</label>
-              <input class="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm" placeholder="48V / 96V / 384V" />
-            </div>
-            <div>
-              <label class="text-xs text-base-100/70">Capacity</label>
-              <input class="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm" placeholder="kWh" />
+          <div class="hero-media">
+            <div class="hero-art">
+              Replace with weighing machine / scale image (around 800×600 px)
             </div>
           </div>
-          <div>
-            <label class="text-xs text-base-100/70">Message</label>
-            <textarea rows="4" class="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm" placeholder="Share project details"></textarea>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- PRODUCTS -->
+  <section id="products" class="container">
+    <div class="section-head">
+      <h2>Our Products &amp; Brands</h2>
+      <p>Edit these cards to list your exact voltage, Ah, models, supported brands and weighing solutions.</p>
+    </div>
+
+    <div class="grid">
+      <article class="card">
+        <h3>Lithium Batteries</h3>
+        <p>Options from <strong>12.8V</strong> up to <strong>48–60V</strong> with multiple Ah capacities. Ideal for inverter, solar, and backup.</p>
+        <div class="card-actions"><a class="ghost" href="#quote">Contact for Options</a></div>
+      </article>
+
+      <article class="card">
+        <h3>Lead-Acid / Inverter Batteries</h3>
+        <p>Wide capacity range for homes, offices, and shops. Supports multiple trusted brands.</p>
+        <div class="card-actions"><a class="ghost" href="#quote">Contact for Options</a></div>
+      </article>
+
+      <article class="card">
+        <h3>Inverters</h3>
+        <p>Pure sine wave, solar-compatible options. Multi-brand inventory for every requirement.</p>
+        <div class="card-actions"><a class="ghost" href="#quote">View Details</a></div>
+      </article>
+
+      <article class="card">
+        <h3>Solar Setups</h3>
+        <p>Complete packages: panels + batteries + inverters. On-grid and off-grid solutions for home &amp; commercial.</p>
+        <div class="card-actions"><a class="ghost" href="#quote">Get a Quote</a></div>
+      </article>
+
+      <article class="card">
+        <h3>Automotive Batteries</h3>
+        <p>Two-wheelers to cars — reliable brands and ranges available.</p>
+        <div class="card-actions"><a class="ghost" href="#quote">Contact for Options</a></div>
+      </article>
+
+      <article class="card">
+        <h3>Weighing Machines</h3>
+        <p>Digital and platform scales for retail shops, kirana, hardware, and industrial use with calibration support.</p>
+        <div class="card-actions"><a class="ghost" href="#quote">Ask About Weighing Scales</a></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" class="reviews">
+    <div class="container">
+      <div class="section-head" style="margin-top:0">
+        <h2>What Our Customers Say</h2>
+        <p>Real feedback from customers who bought batteries, inverters, solar solutions and weighing machines from SB Enterprises.</p>
+      </div>
+
+      <div class="review-carousel" aria-label="Customer reviews">
+        <button class="review-nav prev" type="button" aria-label="Previous review">‹</button>
+
+        <div class="review-window">
+          <div class="review-track">
+            <article class="review-card">
+              <div class="review-header">
+                <div>
+                  <div class="review-name">Rahul Sharma</div>
+                  <div class="review-meta">Local Guide • 5 months ago</div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+              </div>
+              <p class="review-text">
+                Got a lithium inverter setup installed for my home. Very clear explanation, fair pricing and fast installation. Backup is exactly as promised.
+              </p>
+              <div class="review-source">
+                <span>via Google Reviews</span>
+                <span class="review-badge">Verified Customer</span>
+              </div>
+            </article>
+
+            <article class="review-card">
+              <div class="review-header">
+                <div>
+                  <div class="review-name">Pooja Verma</div>
+                  <div class="review-meta">2 months ago</div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+              </div>
+              <p class="review-text">
+                Needed an automotive battery urgently. They suggested the right brand and even helped with fitment. Very polite and professional behaviour.
+              </p>
+              <div class="review-source">
+                <span>via Google Reviews</span>
+                <span class="review-badge">Battery &amp; Inverter</span>
+              </div>
+            </article>
+
+            <article class="review-card">
+              <div class="review-header">
+                <div>
+                  <div class="review-name">Amit Patel</div>
+                  <div class="review-meta">1 month ago</div>
+                </div>
+                <div class="review-stars">★★★★☆</div>
+              </div>
+              <p class="review-text">
+                Installed a small solar setup with inverter battery. Good guidance, tidy wiring and proper bill &amp; warranty card provided. Recommended.
+              </p>
+              <div class="review-source">
+                <span>via Google Reviews</span>
+                <span class="review-badge">Solar Setup</span>
+              </div>
+            </article>
           </div>
-          <button type="button" class="w-full rounded-xl bg-brand-500 px-4 py-2 text-sm font-medium shadow-soft hover:bg-brand-600">Submit</button>
-          <p class="text-[11px] text-base-100/50">This is a static demo form. Connect to your backend or a service like Formspree.</p>
-        </form>
+        </div>
+
+        <button class="review-nav next" type="button" aria-label="Next review">›</button>
+      </div>
+
+      <div class="review-dots">
+        <button class="review-dot active" type="button" data-index="0"></button>
+        <button class="review-dot" type="button" data-index="1"></button>
+        <button class="review-dot" type="button" data-index="2"></button>
+      </div>
+
+      <p style="margin-top:18px; font-size:13px; color:var(--muted); text-align:center;">
+        ⭐ Want to see more feedback?
+        <a href="https://www.google.com/search?q=SB+Enterprises+Your+City" target="_blank" rel="noopener">
+          View all reviews on Google
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ABOUT + LOCATION -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-head" style="margin-top:0">
+        <h2>About SB Enterprises</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            We are a trusted local power and weighing-solutions partner dealing in multi-brand batteries, inverters,
+            solar setups and digital weighing machines.
+          </p>
+          <p>
+            From lithium and inverter batteries to full solar packages and retail/industrial scales, we help you choose
+            the right configuration for homes, offices, shops, and vehicles — with dependable post-sale support and guidance.
+          </p>
+        </div>
+
+        <aside class="about-location">
+          <div class="location-card">
+            <h3>📍 Our Location</h3>
+            <p>Visit SB Enterprises for Batteries, Inverters, Solar Solutions &amp; Weighing Machines.</p>
+
+            <div class="location-map">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241315.1161247789!2d72.71637536776821!3d19.082522317693433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDA0JzU3LjEiTiA3MsKwNDMnMDUuNSJF!5e0!3m2!1sen!2sin!4v1700000000000"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
 
-  <footer class="border-t border-white/10">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 text-sm text-base-100/70 flex flex-col md:flex-row items-center justify-between gap-3">
-      <p>© <span id="year"></span> Your Brand. All rights reserved.</p>
-      <div class="flex items-center gap-4">
-        <a href="#" class="hover:text-white">Privacy</a>
-        <a href="#" class="hover:text-white">Terms</a>
-        <a href="#" class="hover:text-white">Support</a>
+  <!-- QUOTE -->
+  <section id="quote" class="quote">
+    <div class="container">
+      <div class="section-head" style="margin-top:0">
+        <h2>Get a Quote</h2>
+        <p>Share your requirement and we’ll get back to you with the best options.</p>
       </div>
+
+      <form action="#" method="post" novalidate>
+        <div class="row">
+          <div>
+            <label for="name">Name *</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+          </div>
+          <div>
+            <label for="phone">Phone Number *</label>
+            <input id="phone" name="phone" type="tel" placeholder="+91 XXXXX-XXXXX" 
+                   pattern="[0-9+\-\s]{7,15}" 
+                   title="Enter a valid phone number (7–15 digits, +, - and spaces allowed)" 
+                   required />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="email">Email (optional)</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" />
+          </div>
+          <div>
+            <label for="need">Product / Requirement *</label>
+            <select id="need" name="need" required>
+              <option value="">Select an option</option>
+              <option value="lithium-battery">Lithium Battery</option>
+              <option value="inverter-battery">Inverter / Lead-acid Battery</option>
+              <option value="inverter">Inverter</option>
+              <option value="solar-setup">Solar Setup</option>
+              <option value="automotive-battery">Automotive Battery</option>
+              <option value="weighing-machine">Weighing Machine</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="msg">Message / Requirements *</label>
+          <textarea id="msg" name="message" placeholder="Share voltage/Ah, usage (home/office/vehicle/shop), weighing capacity range, preferred brand, etc." required></textarea>
+        </div>
+
+        <div class="submit">
+          <button class="btn" type="submit">Request a Quote</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <strong>SB Enterprises</strong> — Multi-brand batteries, inverters, solar &amp; weighing solutions under one roof. <br/>
+      <small>Address / City, State • Phone: +91 XXXXX XXXXX • Email: you@example.com</small>
     </div>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+  <!-- WHATSAPP FAB -->
+  <a class="wa-fab" href="https://wa.me/91XXXXXXXXXX?text=Hello%20SB%20Enterprises%20%E2%80%94%20I%27d%20like%20a%20quote" 
+     target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M19.1 17.3c-.3-.2-1.7-.8-1.9-.9-.3-.1-.5-.2-.7.2s-.8.9-1 .9-.5 0-.8-.3c-.4-.2-1.4-.5-2.6-1.7-1-1-1.7-2.1-1.9-2.4-.2-.4 0-.6.2-.8.2-.2.4-.5.5-.7.2-.2.2-.4.3-.6 0-.2 0-.5-.1-.7-.2-.2-.7-1.8-1-2.5-.3-.7-.6-.6-.7-.6h-.6c-.2 0-.6.1-.9.4-.3.4-1.1 1.1-1.1 2.7s1.1 3.1 1.3 3.3c.2.3 2.1 3.3 5.1 4.6.7.3 1.3.5 1.8.6.8.3 1.6.2 2.2.1.7-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.1-1.4 0 0-.1 0-.4-.2zM16 3C9.4 3 4 8.4 4 15c0 2.1.5 4 .1 4.7L2 29l9.5-2.5c.7.2 1.6.3 2.5.3 6.6 0 12-5.4 12-12S22.6 3 16 3z"/>
+    </svg>
+  </a>
+  <span class="wa-label">Chat on WhatsApp</span>
+
+  <!-- MOBILE MENU SCRIPT -->
+  <script>
+    (function(){
+      const btn = document.querySelector('.sb-menu-toggle');
+      const panel = document.getElementById('sb-primary-nav');
+      const BREAKPOINT = 880;
+      if(!btn || !panel) return;
+
+      function setOpen(open){
+        panel.dataset.open = String(open);
+        btn.setAttribute('aria-expanded', String(open));
+      }
+      btn.addEventListener('click', () => {
+        const open = panel.dataset.open === 'true';
+        setOpen(!open);
+      });
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape' && panel.dataset.open === 'true'){
+          setOpen(false);
+          btn.focus();
+        }
+      });
+      panel.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if(a && window.innerWidth <= BREAKPOINT){
+          setOpen(false);
+        }
+      });
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          if(window.innerWidth > BREAKPOINT){
+            panel.dataset.open = 'false';
+            btn.setAttribute('aria-expanded', 'false');
+          }
+        }, 100);
+      });
+    })();
+  </script>
+
+  <!-- REVIEW CAROUSEL SCRIPT -->
+  <script>
+    (function(){
+      const track = document.querySelector('.review-track');
+      const slides = Array.from(document.querySelectorAll('.review-card'));
+      const prevBtn = document.querySelector('.review-nav.prev');
+      const nextBtn = document.querySelector('.review-nav.next');
+      const dots = Array.from(document.querySelectorAll('.review-dot'));
+
+      if (!track || !slides.length) return;
+
+      let index = 0;
+      let timer = null;
+
+      function goTo(i){
+        index = (i + slides.length) % slides.length;
+        track.style.transform = 'translateX(-' + (index * 100) + '%)';
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === index);
+        });
+      }
+
+      function next(){ goTo(index + 1); }
+      function prev(){ goTo(index - 1); }
+
+      prevBtn && prevBtn.addEventListener('click', prev);
+      nextBtn && nextBtn.addEventListener('click', next);
+
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          goTo(parseInt(dot.dataset.index, 10));
+        });
+      });
+
+      function startAuto(){
+        if (timer) clearInterval(timer);
+        timer = setInterval(next, 6000);
+      }
+      function stopAuto(){
+        if (timer) clearInterval(timer);
+      }
+
+      const interactiveElements = [prevBtn, nextBtn, ...dots, track];
+      interactiveElements.forEach(el => {
+        if (!el) return;
+        el.addEventListener('mouseenter', stopAuto);
+        el.addEventListener('mouseleave', startAuto);
+        el.addEventListener('focusin', stopAuto);
+        el.addEventListener('focusout', startAuto);
+      });
+
+      goTo(0);
+      startAuto();
+    })();
+  </script>
 </body>
 </html>
