@@ -1,37 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- ========= BASIC SEO ========= -->
   <meta charset="utf-8" />
+  <title>SB Enterprises — Power, Solar & Weighing Solutions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SB Enterprises — Multi-brand Batteries, Inverters, Solar & Weighing Solutions</title>
-  <meta name="description" content="SB Enterprises provides multi-brand lithium and inverter batteries, inverters, solar setups, automotive batteries, and weighing machines. Reliable power solutions for homes, offices, and vehicles." />
-
-  <!-- ========= SCHEMA.ORG JSON-LD (Basic LocalBusiness) ========= -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "SB Enterprises",
-    "description": "Multi-brand batteries, inverters, solar solutions and weighing machines.",
-    "url": "https://your-domain.com",
-    "telephone": "+91XXXXXXXXXX",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Your Street, Area",
-      "addressLocality": "Your City",
-      "addressRegion": "Your State",
-      "postalCode": "Your PIN",
-      "addressCountry": "IN"
-    },
-    "sameAs": []
-  }
-  </script>
 
   <style>
-    /* ==============================
-       THEME VARIABLES
-       ============================== */
     :root{
       --primary: #1b5e20;
       --primary-600:#14501a;
@@ -41,36 +15,32 @@
       --bg:      #ffffff;
       --card:    #f7faf7;
       --border:  #e6efe6;
-      --maxw:    1200px;
       --radius:  12px;
       --shadow:  0 6px 20px rgba(0,0,0,.06);
+      --maxw:    1200px;
     }
 
-    /* ==============================
-       GLOBAL
-       ============================== */
-    html { scroll-behavior: smooth; }
-    * { box-sizing: border-box; }
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.6;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
     }
-    img{ max-width: 100%; height: auto; display:block; }
-    a{ color: var(--primary); text-decoration: none; }
-    .container{
-      width: 100%;
-      max-width: var(--maxw);
-      margin-inline: auto;
-      padding: 0 20px;
-    }
-    section{ scroll-margin-top: 90px; }
+    a{ text-decoration:none; color:inherit; }
 
-    /* ==============================
-       HEADER (same as before)
-       ============================== */
+    .container{
+      width:100%;
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    /* =========================
+       HEADER
+       ========================= */
     .sb-header{
       position: sticky; top: 0; z-index: 1000;
       background: #ffffffcc;
@@ -108,7 +78,6 @@
     }
     .sb-navpanel .sb-cta:hover{ background: var(--primary-600); }
 
-    /* Hamburger */
     .sb-menu-toggle{
       appearance:none; border:0; background:transparent; cursor:pointer;
       width:44px; height:44px; border-radius:10px; display:none;
@@ -162,9 +131,9 @@
       .sb-navpanel ul{ gap:16px; }
     }
 
-    /* ==============================
+    /* =========================
        BUTTON
-       ============================== */
+       ========================= */
     .btn{
       display:inline-block;
       padding:10px 16px;
@@ -181,11 +150,9 @@
       transform:translateY(-1px);
     }
 
-    /* ==============================
-       NEW DUAL HERO (from your code)
-       ============================== */
-
-    /* subtle page background behind both heroes */
+    /* =========================
+       DUAL HERO (your code)
+       ========================= */
     .hero-bg{
       background:
         radial-gradient(circle at top left, rgba(102,187,106,0.10) 0%, transparent 55%),
@@ -198,7 +165,7 @@
     }
 
     .hero-section{
-      padding:50px 0;
+      padding:60px 0;
     }
 
     .hero-layout{
@@ -245,6 +212,17 @@
       font-size:clamp(26px,3vw,40px);
       color:var(--primary);
     }
+/* Right-align entire content of the second hero */
+.hero-section--weighing .hero-content{
+  text-align: right;
+}
+
+/* Push the button to the right as well */
+.hero-section--weighing .hero-content .btn{
+  margin-left: auto;
+  display: inline-block;
+}
+
     .hero-content p{
       margin:0 0 20px;
       color:var(--muted);
@@ -276,25 +254,32 @@
         grid-template-areas:
           "content"
           "media";
-        text-align:left;
       }
       .hero-section{
-        padding:30px 0;
+        padding:35px 0;
       }
     }
 
-    /* ==============================
-       PRODUCTS GRID
-       ============================== */
+    /* =========================
+       SECTION HEAD
+       ========================= */
     .section-head{
       margin: 56px 0 20px;
     }
     .section-head h2{
-      margin: 0 0 8px; color: var(--primary);
-      font-size: clamp(22px, 2.6vw, 32px);
+      margin:0 0 6px;
+      font-size:clamp(22px, 2.6vw, 32px);
+      color:var(--primary);
     }
-    .section-head p{ margin: 0; color: var(--muted); }
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
 
+    /* =========================
+       PRODUCTS
+       ========================= */
     .grid{
       display:grid; gap: 20px;
       grid-template-columns: repeat(12, 1fr);
@@ -318,44 +303,62 @@
       .card{ grid-column: span 12; }
     }
 
-    /* ==============================
-       GOOGLE REVIEWS / TESTIMONIALS
-       ============================== */
+    /* =========================
+       NEW REVIEWS SECTION (your scroll version)
+       ========================= */
     .reviews{
       background:#fff;
       border-top:1px solid var(--border);
-      padding: 42px 0 56px;
-    }
-    .review-carousel{
-      position: relative;
-      margin-top: 12px;
+      border-bottom:1px solid var(--border);
+      padding:32px 0 40px;
     }
 
-    /* Visible area – wider & padded so card isn't cut */
-    .review-window{
-      overflow: hidden;
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 0 32px;
+    .review-slider{
+      position:relative;
+      margin-top:14px;
+      margin-left:-10px;
+      margin-right:-10px;
     }
 
     .review-track{
-      display: flex;
-      transition: transform .45s ease;
+      display:flex;
+      gap:16px;
+      padding:4px 18px 18px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      scroll-behavior:smooth;
+
+      scrollbar-width: none;          /* Firefox */
+      -ms-overflow-style: none;       /* IE / Edge legacy */
+    }
+    .review-track::-webkit-scrollbar{
+      display:none;                   /* Chrome, Edge, Safari */
     }
 
     .review-card{
-      flex: 0 0 100%;
-      max-width: 100%;
-      margin: 0 8px;
-      background: var(--card);
+      scroll-snap-align:center;
+      background:var(--card);
       border:1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px 16px 18px;
-      box-shadow: var(--shadow);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:16px 16px 18px;
+
       display:flex;
       flex-direction:column;
       gap:8px;
+
+      flex:0 0 85%;
+      max-width:360px;
+    }
+    @media (min-width: 640px){
+      .review-card{
+        flex:0 0 55%;
+      }
+    }
+    @media (min-width: 960px){
+      .review-card{
+        flex:0 0 32%;
+      }
     }
 
     .review-header{
@@ -366,29 +369,31 @@
     }
     .review-name{
       font-weight:700;
-      color: var(--text);
-      font-size: 15px;
+      font-size:15px;
+      color:var(--text);
     }
     .review-meta{
-      font-size: 12px;
-      color: var(--muted);
+      font-size:12px;
+      color:var(--muted);
     }
     .review-stars{
-      color: #f4b400;
-      font-size: 14px;
+      font-size:14px;
+      color:#f4b400;
+      white-space:nowrap;
     }
     .review-text{
-      margin: 4px 0 0;
-      font-size: 14px;
-      color: var(--text);
+      margin:4px 0 0;
+      font-size:14px;
+      color:var(--text);
     }
     .review-source{
-      margin-top: 10px;
-      font-size: 12px;
-      color: var(--muted);
+      margin-top:10px;
+      font-size:12px;
+      color:var(--muted);
       display:flex;
       justify-content:space-between;
       align-items:center;
+      gap:10px;
     }
     .review-badge{
       font-size:11px;
@@ -396,62 +401,80 @@
       border-radius:999px;
       background:#fff;
       border:1px solid var(--border);
+      white-space:nowrap;
     }
 
     .review-nav{
       position:absolute;
       top:50%;
-      transform: translateY(-50%);
-      width:32px;
-      height:32px;
+      transform:translateY(-50%);
+      width:34px;
+      height:34px;
       border-radius:50%;
       border:1px solid var(--border);
       background:#fff;
-      box-shadow: var(--shadow);
+      box-shadow:var(--shadow);
       display:flex;
       align-items:center;
       justify-content:center;
       cursor:pointer;
-      font-size:18px;
-      color: var(--primary);
+      font-size:20px;
+      color:var(--primary);
+      z-index:2;
     }
     .review-nav:hover{
       background:#f6fff6;
     }
-    .review-nav.prev{ left: 10px; }
-    .review-nav.next{ right: 10px; }
-
-    .review-dots{
-      display:flex;
-      justify-content:center;
-      gap:8px;
-      margin-top: 14px;
+    .review-nav.prev{
+      left:4px;
     }
-    .review-dot{
-      width:8px;
-      height:8px;
-      padding:0;
-      border-radius:999px;
-      border:none;
-      background: var(--border);
-      cursor:pointer;
+    .review-nav.next{
+      right:4px;
     }
-    .review-dot.active{
-      width:22px;
-      background: var(--primary);
-    }
-
-    @media (max-width: 520px){
-      .review-nav.prev{ left: 4px; }
-      .review-nav.next{ right: 4px; }
-      .review-window{
-        padding: 0 16px;
+    @media (max-width: 420px){
+      .review-nav{
+        width:30px;
+        height:30px;
+        font-size:18px;
       }
     }
 
-    /* ==============================
+    .review-slider::before,
+    .review-slider::after{
+      content:"";
+      position:absolute;
+      top:0;
+      bottom:0;
+      width:32px;
+      pointer-events:none;
+      z-index:1;
+    }
+    .review-slider::before{
+      left:0;
+      background:linear-gradient(to right, #ffffff, rgba(255,255,255,0));
+    }
+    .review-slider::after{
+      right:0;
+      background:linear-gradient(to left, #ffffff, rgba(255,255,255,0));
+    }
+
+    .review-cta{
+      margin-top:18px;
+      font-size:13px;
+      color:var(--muted);
+      text-align:center;
+    }
+    .review-cta a{
+      color:var(--primary);
+      font-weight:600;
+    }
+    .review-cta a:hover{
+      text-decoration:underline;
+    }
+
+    /* =========================
        ABOUT + LOCATION
-       ============================== */
+       ========================= */
     .about{
       background: #fff;
       border-top:1px solid var(--border);
@@ -503,9 +526,9 @@
       border:0;
     }
 
-    /* ==============================
+    /* =========================
        QUOTE FORM
-       ============================== */
+       ========================= */
     .quote{
       padding: 42px 0 64px;
     }
@@ -529,18 +552,18 @@
     textarea{ min-height: 120px; resize: vertical; }
     .submit{ justify-self: start; }
 
-    /* ==============================
+    /* =========================
        FOOTER
-       ============================== */
+       ========================= */
     footer{
       border-top:1px solid var(--border);
       padding: 22px 0; color: var(--muted); font-size: 14px;
       background: #fff;
     }
 
-    /* ==============================
-       FLOATING WHATSAPP BUTTON
-       ============================== */
+    /* =========================
+       WHATSAPP FAB
+       ========================= */
     .wa-fab{
       position: fixed; right: 18px; bottom: 18px; z-index: 60;
       width: 56px; height: 56px; border-radius: 50%;
@@ -584,7 +607,7 @@
     </div>
   </header>
 
-  <!-- DUAL HERO WRAPPER -->
+  <!-- DUAL HERO -->
   <div class="hero-bg">
 
     <!-- HERO 1: POWER -->
@@ -679,82 +702,95 @@
     </div>
   </section>
 
-  <!-- REVIEWS -->
+  <!-- NEW REVIEWS SECTION -->
   <section id="reviews" class="reviews">
     <div class="container">
       <div class="section-head" style="margin-top:0">
         <h2>What Our Customers Say</h2>
-        <p>Real feedback from customers who bought batteries, inverters, solar solutions and weighing machines from SB Enterprises.</p>
+        <p>Swipe or use the arrows to see more reviews from SB Enterprises customers.</p>
       </div>
 
-      <div class="review-carousel" aria-label="Customer reviews">
-        <button class="review-nav prev" type="button" aria-label="Previous review">‹</button>
+      <div class="review-slider" aria-label="Customer reviews">
+        <button class="review-nav prev" type="button" aria-label="Previous reviews">‹</button>
 
-        <div class="review-window">
-          <div class="review-track">
-            <article class="review-card">
-              <div class="review-header">
-                <div>
-                  <div class="review-name">Rahul Sharma</div>
-                  <div class="review-meta">Local Guide • 5 months ago</div>
-                </div>
-                <div class="review-stars">★★★★★</div>
+        <div class="review-track" id="review-track">
+          <!-- CARD 1 -->
+          <article class="review-card">
+            <div class="review-header">
+              <div>
+                <div class="review-name">Rahul Sharma</div>
+                <div class="review-meta">Local Guide • 5 months ago</div>
               </div>
-              <p class="review-text">
-                Got a lithium inverter setup installed for my home. Very clear explanation, fair pricing and fast installation. Backup is exactly as promised.
-              </p>
-              <div class="review-source">
-                <span>via Google Reviews</span>
-                <span class="review-badge">Verified Customer</span>
-              </div>
-            </article>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-text">
+              Got a lithium inverter setup installed for my home. Very clear explanation, fair pricing and fast installation. Backup is exactly as promised.
+            </p>
+            <div class="review-source">
+              <span>via Google Reviews</span>
+              <span class="review-badge">Lithium &amp; Inverter</span>
+            </div>
+          </article>
 
-            <article class="review-card">
-              <div class="review-header">
-                <div>
-                  <div class="review-name">Pooja Verma</div>
-                  <div class="review-meta">2 months ago</div>
-                </div>
-                <div class="review-stars">★★★★★</div>
+          <!-- CARD 2 -->
+          <article class="review-card">
+            <div class="review-header">
+              <div>
+                <div class="review-name">Pooja Verma</div>
+                <div class="review-meta">2 months ago</div>
               </div>
-              <p class="review-text">
-                Needed an automotive battery urgently. They suggested the right brand and even helped with fitment. Very polite and professional behaviour.
-              </p>
-              <div class="review-source">
-                <span>via Google Reviews</span>
-                <span class="review-badge">Battery &amp; Inverter</span>
-              </div>
-            </article>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-text">
+              Needed an automotive battery urgently. They suggested the right brand and even helped with fitment. Very polite and professional behaviour.
+            </p>
+            <div class="review-source">
+              <span>via Google Reviews</span>
+              <span class="review-badge">Automotive Battery</span>
+            </div>
+          </article>
 
-            <article class="review-card">
-              <div class="review-header">
-                <div>
-                  <div class="review-name">Amit Patel</div>
-                  <div class="review-meta">1 month ago</div>
-                </div>
-                <div class="review-stars">★★★★☆</div>
+          <!-- CARD 3 -->
+          <article class="review-card">
+            <div class="review-header">
+              <div>
+                <div class="review-name">Amit Patel</div>
+                <div class="review-meta">1 month ago</div>
               </div>
-              <p class="review-text">
-                Installed a small solar setup with inverter battery. Good guidance, tidy wiring and proper bill &amp; warranty card provided. Recommended.
-              </p>
-              <div class="review-source">
-                <span>via Google Reviews</span>
-                <span class="review-badge">Solar Setup</span>
+              <div class="review-stars">★★★★☆</div>
+            </div>
+            <p class="review-text">
+              Installed a small solar setup with inverter battery. Good guidance, tidy wiring and proper bill &amp; warranty card provided. Recommended.
+            </p>
+            <div class="review-source">
+              <span>via Google Reviews</span>
+              <span class="review-badge">Solar Setup</span>
+            </div>
+          </article>
+
+          <!-- CARD 4 -->
+          <article class="review-card">
+            <div class="review-header">
+              <div>
+                <div class="review-name">Kiran Traders</div>
+                <div class="review-meta">Shop Owner • 3 weeks ago</div>
               </div>
-            </article>
-          </div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-text">
+              Bought weighing machines and inverter battery for our shop. Good rates and proper demo given. Service support is also quick.
+            </p>
+            <div class="review-source">
+              <span>via Google Reviews</span>
+              <span class="review-badge">Weighing &amp; Power</span>
+            </div>
+          </article>
         </div>
 
-        <button class="review-nav next" type="button" aria-label="Next review">›</button>
+        <button class="review-nav next" type="button" aria-label="Next reviews">›</button>
       </div>
 
-      <div class="review-dots">
-        <button class="review-dot active" type="button" data-index="0"></button>
-        <button class="review-dot" type="button" data-index="1"></button>
-        <button class="review-dot" type="button" data-index="2"></button>
-      </div>
-
-      <p style="margin-top:18px; font-size:13px; color:var(--muted); text-align:center;">
+      <p class="review-cta">
         ⭐ Want to see more feedback?
         <a href="https://www.google.com/search?q=SB+Enterprises+Your+City" target="_blank" rel="noopener">
           View all reviews on Google
@@ -914,59 +950,22 @@
     })();
   </script>
 
-  <!-- REVIEW CAROUSEL SCRIPT -->
+  <!-- REVIEW SCROLL SCRIPT -->
   <script>
     (function(){
-      const track = document.querySelector('.review-track');
-      const slides = Array.from(document.querySelectorAll('.review-card'));
+      const track = document.getElementById('review-track');
       const prevBtn = document.querySelector('.review-nav.prev');
       const nextBtn = document.querySelector('.review-nav.next');
-      const dots = Array.from(document.querySelectorAll('.review-dot'));
 
-      if (!track || !slides.length) return;
+      if(!track) return;
 
-      let index = 0;
-      let timer = null;
-
-      function goTo(i){
-        index = (i + slides.length) % slides.length;
-        track.style.transform = 'translateX(-' + (index * 100) + '%)';
-        dots.forEach((dot, idx) => {
-          dot.classList.toggle('active', idx === index);
-        });
+      function scrollByAmount(direction){
+        const amount = track.clientWidth * 0.8 * direction; // ~one card
+        track.scrollBy({ left: amount, behavior: 'smooth' });
       }
 
-      function next(){ goTo(index + 1); }
-      function prev(){ goTo(index - 1); }
-
-      prevBtn && prevBtn.addEventListener('click', prev);
-      nextBtn && nextBtn.addEventListener('click', next);
-
-      dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-          goTo(parseInt(dot.dataset.index, 10));
-        });
-      });
-
-      function startAuto(){
-        if (timer) clearInterval(timer);
-        timer = setInterval(next, 6000);
-      }
-      function stopAuto(){
-        if (timer) clearInterval(timer);
-      }
-
-      const interactiveElements = [prevBtn, nextBtn, ...dots, track];
-      interactiveElements.forEach(el => {
-        if (!el) return;
-        el.addEventListener('mouseenter', stopAuto);
-        el.addEventListener('mouseleave', startAuto);
-        el.addEventListener('focusin', stopAuto);
-        el.addEventListener('focusout', startAuto);
-      });
-
-      goTo(0);
-      startAuto();
+      prevBtn && prevBtn.addEventListener('click', () => scrollByAmount(-1));
+      nextBtn && nextBtn.addEventListener('click', () => scrollByAmount(1));
     })();
   </script>
 </body>
