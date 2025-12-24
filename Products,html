@@ -1,0 +1,20 @@
+<main class="container">
+  <h1>Our Products</h1>
+
+  <section class="grid">
+    <article class="card">
+      <h3>Lithium Batteries</h3>
+      <p>12.8V to 60V lithium solutions</p>
+    </article>
+
+    <article class="card">
+      <h3>Inverters</h3>
+      <p>Pure sine wave & solar compatible</p>
+    </article>
+
+    <article class="card">
+      <h3>Weighing Machines</h3>
+      <p>Retail & industrial scales</p>
+    </article>
+  </section>
+</main>
